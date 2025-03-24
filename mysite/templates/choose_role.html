@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Setzt den Zeichensatz der Webseite auf UTF-8, um eine korrekte Darstellung von Sonderzeichen zu gewährleisten -->
+    <meta charset="UTF-8">
+
+    <!-- Sorgt für ein responsives Design: Die Ansicht wird an verschiedene Bildschirmgrössen angepasst -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Der Titel der Seite, der in der Browser-Tab-Leiste angezeigt wird -->
+    <title>Wähle Deine Rolle</title>
+</head>
+<body>
+    <!-- Überschrift der Seite -->
+    <h2>Wähle deine Rolle</h2>
+
+    <!-- Formular zur Auswahl der Benutzerrolle -->
+    <form method="POST">
+        <!-- Beschriftung für das Rollenfeld -->
+        <label for="role">Rolle:</label><br>
+
+        <!-- Radiobutton für die Auswahl der Rolle "Koch" -->
+        <input type="radio" id="koch" name="role" value="Koch" required>
+        <label for="koch">Koch</label><br>
+
+        <!-- Radiobutton für die Auswahl der Rolle "Rezepteverwalter" -->
+        <input type="radio" id="rezepteverwalter" name="role" value="Rezepteverwalter" required>
+        <label for="rezepteverwalter">Rezepteverwalter</label><br><br>
+
+        <!-- Absende-Button, um die Auswahl zu bestätigen und das Formular abzusenden -->
+        <button type="submit">Rolle wählen</button>
+    </form>
+</body>
+</html>

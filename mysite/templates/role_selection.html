@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Setzt den Zeichensatz der Webseite auf UTF-8, damit Sonderzeichen korrekt angezeigt werden -->
+    <meta charset="UTF-8">
+    
+    <!-- Macht die Seite responsiv, d.h. sie passt sich an verschiedene Bildschirmgrössen an -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel der Seite, der in der Browser-Tab-Leiste angezeigt wird -->
+    <title>Rolle wählen</title>
+</head>
+<body>
+    <!-- Überschrift der Seite, die dem Benutzer mitteilt, dass er seine Rolle wählen muss -->
+    <h2>Wähle deine Rolle</h2>
+
+    <!-- Formular, um die Rolle auszuwählen und abzusenden -->
+    <form method="POST">
+        <!-- Label und Dropdown-Menü für die Rollenwahl -->
+        <label for="role">Rolle</label>
+        <select name="role">
+            <!-- Optionen im Dropdown-Menü: Der Benutzer kann zwischen "Koch" und "Rezepteverwalter" wählen -->
+            <option value="Koch">Koch</option>
+            <option value="Rezepteverwalter">Rezepteverwalter</option>
+        </select><br><br>
+
+        <!-- Button, um die gewählte Rolle abzusenden -->
+        <button type="submit">Rolle auswählen</button>
+    </form>
+</body>
+</html>

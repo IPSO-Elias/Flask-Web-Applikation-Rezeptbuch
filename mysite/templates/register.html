@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Setzt den Zeichensatz der Webseite auf UTF-8, damit Sonderzeichen korrekt angezeigt werden -->
+    <meta charset="UTF-8">
+    
+    <!-- Macht die Seite responsiv, d.h. sie passt sich an verschiedene Bildschirmgrössen an -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel der Seite, der in der Browser-Tab-Leiste angezeigt wird -->
+    <title>Registrierung</title>
+</head>
+<body>
+    <!-- Überschrift der Seite, die den Benutzer auf der Registrierungsseite begrüsst -->
+    <h1>Registrierung</h1>
+
+    <!-- Flash-Nachrichten, um Benachrichtigungen oder Fehler anzuzeigen -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            <!-- Schleife über alle Flash-Nachrichten und Anzeige der entsprechenden Nachricht -->
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Das Formular für die Registrierung des Benutzers -->
+    <form method="POST">
+        <!-- Eingabefeld für den Benutzernamen -->
+        <label for="username">Benutzername:</label>
+        <input type="text" name="username" required><br>
+        
+        <!-- Eingabefeld für das Passwort -->
+        <label for="password">Passwort:</label>
+        <input type="password" name="password" required><br>
+        
+        <!-- Eingabefeld für die E-Mail-Adresse -->
+        <label for="email">E-Mail:</label>
+        <input type="email" name="email" required><br>
+        
+        <!-- Auswahlfeld für die Rolle des Benutzers -->
+        <label for="role">Rolle:</label>
+        <select name="role" required>
+            <option value="Rezepteverwalter">Rezepteverwalter</option>
+            <option value="Koch">Koch</option>
+        </select><br>
+
+        <!-- Absenden-Button für das Formular -->
+        <button type="submit">Registrieren</button>
+    </form>
+
+    <!-- Link zum Login, falls der Benutzer bereits ein Konto hat -->
+    <a href="{{ url_for('login') }}">Schon einen Account? Jetzt einloggen</a>
+</body>
+</html>

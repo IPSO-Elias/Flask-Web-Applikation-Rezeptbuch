@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Setzt den Zeichensatz der Webseite auf UTF-8, um eine korrekte Darstellung von Sonderzeichen zu gewährleisten -->
+    <meta charset="UTF-8">
+    
+    <!-- Sorgt für ein responsives Design: Die Ansicht wird an verschiedene Bildschirmgrössen angepasst -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Der Titel der Seite, der in der Browser-Tab-Leiste angezeigt wird -->
+    <title>Rezept hinzufügen</title>
+
+    <style>
+        /* Styling für den gesamten Körper der Seite, hier wird die Schriftart festgelegt */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styling für die Navigationsleiste */
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Styling für die Links in der Navigationsleiste */
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        /* Styling für den Hover-Effekt auf die Links in der Navigationsleiste */
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* Styling für das Formular, z.B. Padding, Maximalbreite, Hintergrundfarbe */
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        /* Styling für das Label, es wird für jedes Eingabefeld verwendet */
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Styling für die Eingabefelder und Textarea, um sie benutzerfreundlich zu gestalten */
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        /* Styling für den Button, einschliesslich des Hover-Effekts */
+        button {
+            margin-top: 15px;
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigationsleiste -->
+    <div class="navbar">
+        <!-- Link zum Rezeptbuch, das auf die URL für Rezepte verweist -->
+        <a href="{{ url_for('recipes') }}">📖 Rezeptbuch</a>
+
+        <!-- Link zum Rezept hinzufügen, das auf die URL für das Hinzufügen eines Rezepts verweist -->
+        <a href="{{ url_for('add_recipe') }}">➕ Rezept hinzufügen</a>
+
+        <!-- Link zum Logout, das auf die URL für Logout verweist -->
+        <a href="{{ url_for('logout') }}">🚪 Logout</a>
+    </div>
+
+    <!-- Hauptüberschrift der Seite, die dem Benutzer mitteilt, dass er ein Rezept hinzufügen kann -->
+    <h1>Rezept hinzufügen</h1>
+
+    <!-- Formular zum Hinzufügen eines Rezepts -->
+    <form method="POST">
+        <!-- Eingabefeld für den Namen des Gerichts -->
+        <label for="name">Gericht:</label>
+        <input type="text" name="name" required>
+
+        <!-- Textarea für die Zutaten des Rezepts -->
+        <label for="zutaten">Zutaten:</label>
+        <textarea name="zutaten" required></textarea>
+
+        <!-- Textarea für die Zubereitung des Rezepts -->
+        <label for="zubereitung">Zubereitung:</label>
+        <textarea name="zubereitung" required></textarea>
+
+        <!-- Eingabefeld für Kalorien des Rezepts (optional) -->
+        <label for="kalorien">Kalorien:</label>
+        <input type="number" name="kalorien">
+
+        <!-- Eingabefeld für den Proteinwert des Rezepts (optional) -->
+        <label for="protein">Protein:</label>
+        <input type="number" name="protein">
+
+        <!-- Eingabefeld für den Kohlenhydratwert des Rezepts (optional) -->
+        <label for="kohlenhydrate">Kohlenhydrate:</label>
+        <input type="number" name="kohlenhydrate">
+
+        <!-- Eingabefeld für den Fettwert des Rezepts (optional) -->
+        <label for="fett">Fett:</label>
+        <input type="number" name="fett">
+
+        <!-- Eingabefeld für den Ballaststoffwert des Rezepts (optional) -->
+        <label for="ballaststoffe">Ballaststoffe:</label>
+        <input type="number" name="ballaststoffe">
+
+        <!-- Absende-Button für das Formular -->
+        <button type="submit">Rezept speichern</button>
+    </form>
+
+</body>
+</html>

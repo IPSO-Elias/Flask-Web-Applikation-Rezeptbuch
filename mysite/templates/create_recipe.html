@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Setzt den Zeichensatz der Webseite auf UTF-8, damit Sonderzeichen korrekt angezeigt werden -->
+    <meta charset="UTF-8">
+    
+    <!-- Macht die Seite responsiv, d.h. sie passt sich an verschiedene Bildschirmgrössen an -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel der Seite, der in der Browser-Tab-Leiste angezeigt wird -->
+    <title>Rezept erstellen</title>
+</head>
+<body>
+    <!-- Überschrift der Seite, die den Benutzer darüber informiert, dass er ein neues Rezept erstellen kann -->
+    <h2>Neues Rezept erstellen</h2>
+
+    <!-- Formular zum Erstellen eines neuen Rezepts -->
+    <form method="POST">
+        <!-- Eingabefeld für den Rezeptnamen, das erforderlich ist -->
+        <label for="name">Rezeptname:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <!-- Textarea für die Zutaten des Rezepts, das erforderlich ist -->
+        <label for="ingredients">Zutaten:</label><br>
+        <textarea id="ingredients" name="ingredients" required></textarea><br><br>
+
+        <!-- Textarea für die Anleitung des Rezepts, die ebenfalls erforderlich ist -->
+        <label for="instructions">Anleitung:</label><br>
+        <textarea id="instructions" name="instructions" required></textarea><br><br>
+
+        <!-- Absende-Button für das Formular -->
+        <button type="submit">Rezept erstellen</button>
+    </form>
+</body>
+</html>

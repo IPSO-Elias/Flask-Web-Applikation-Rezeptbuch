@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Setzt den Zeichensatz der Webseite auf UTF-8, damit Sonderzeichen korrekt angezeigt werden -->
+    <meta charset="UTF-8">
+    
+    <!-- Macht die Seite responsiv, d.h. sie passt sich an verschiedene Bildschirmgrössen an -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel der Seite, der in der Browser-Tab-Leiste angezeigt wird -->
+    <title>User Dashboard</title>
+</head>
+<body>
+    <!-- Überschrift für das Dashboard des Benutzers -->
+    <h2>User Dashboard</h2>
+
+    <!-- Eine weitere Überschrift, die den Bereich für Rezepte beschreibt -->
+    <h3>Rezepte (Nur Lese-Rechte)</h3>
+    
+    <!-- Liste aller Rezepte, die der Benutzer einsehen kann -->
+    <ul>
+        <!-- Schleife, um alle Rezepte anzuzeigen -->
+        {% for recipe in recipes %}
+            <!-- Jedes Rezept wird als Listeneintrag dargestellt -->
+            <li>{{ recipe[1] }} - {{ recipe[2] }} - {{ recipe[3] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Zeichensatz für die Webseite festlegen (UTF-8) -->
+    <meta charset="UTF-8">
+    <!-- Responsive Design: Passt die Ansicht an verschiedene Bildschirmgrössen an -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titel der Webseite -->
+    <title>Rezeptbuch</title>
+    <style>
+        /* Stil für den gesamten Text auf der Seite */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /* Stil für die Navigationsleiste */
+        .navbar {
+            background-color: #333; /* Dunkelgrauer Hintergrund */
+            padding: 10px; /* Innenabstand */
+            display: flex; /* Flexbox für Layout */
+            justify-content: space-between; /* Abstand zwischen den Elementen */
+        }
+        /* Stil für Links in der Navigationsleiste */
+        .navbar a {
+            color: white; /* Weisse Schriftfarbe */
+            text-decoration: none; /* Keine Unterstreichung */
+            padding: 10px; /* Innenabstand */
+        }
+        /* Hover-Effekt für Links */
+        .navbar a:hover {
+            background-color: #555; /* Hintergrundfarbe ändert sich bei Hover */
+        }
+        /* Stil für die Tabelle */
+        table {
+            width: 100%; /* Tabellenbreite auf 100% setzen */
+            border-collapse: collapse; /* Zusammenführen der Ränder */
+            margin-top: 20px; /* Abstand von oben */
+        }
+        table, th, td {
+            border: 1px solid black; /* Schwarze Ränder für Tabelle und Zellen */
+        }
+        /* Stil für Zellen */
+        th, td {
+            padding: 10px; /* Innenabstand */
+            text-align: left; /* Text linksbündig */
+        }
+        /* Stil für Tabellenkopf (Überschrift) */
+        th {
+            background-color: #f2f2f2; /* Heller Hintergrund für Kopfzeilen */
+        }
+        /* Stil für den Löschen-Button */
+        .delete-btn {
+            background-color: red; /* Roter Hintergrund */
+            color: white; /* Weisse Schriftfarbe */
+            border: none; /* Keine Ränder */
+            padding: 5px 10px; /* Innenabstand */
+            cursor: pointer; /* Zeiger-Cursor beim Hover */
+        }
+        /* Hover-Effekt für den Löschen-Button */
+        .delete-btn:hover {
+            background-color: darkred; /* Dunklerer Rotton bei Hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigationsleiste mit Links -->
+    <div class="navbar">
+        <!-- Link zum Rezeptbuch -->
+        <a href="{{ url_for('recipes') }}">📖 Rezeptbuch</a>
+
+        <!-- Bedingte Anzeige des Links zum Hinzufügen von Rezepten nur für den Rezeptverwalter -->
+        {% if current_user.role == 'Rezepteverwalter' %}
+            <a href="{{ url_for('add_recipe') }}">➕ Rezept hinzufügen</a>
+        {% endif %}
+
+        <!-- Link zum Logout -->
+        <a href="{{ url_for('logout') }}">🚪 Logout</a>
+    </div>
+
+    <!-- Hauptüberschrift -->
+    <h1>Rezeptbuch</h1>
+
+    <!-- Tabelle für die Rezepte -->
+    <table>
+        <thead>
+            <tr>
+                <!-- Spaltenüberschriften -->
+                <th>Gericht</th>
+                <th>Zutaten</th>
+                <th>Zubereitung</th>
+                <th>Kalorien</th>
+                <th>Protein</th>
+                <th>Kohlenhydrate</th>
+                <th>Fett</th>
+                <th>Ballaststoffe</th>
+
+                <!-- Bedingte Anzeige der Spalte "Aktionen" nur für den Rezeptverwalter -->
+                {% if current_user.role == 'Rezepteverwalter' %}
+                    <th>Aktionen</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iteration durch die Rezeptliste -->
+            {% for recipe in recipes %}
+                <tr>
+                    <!-- Anzeige der Rezeptdetails in den Zellen -->
+                    <td>{{ recipe[1] }}</td>
+                    <td>{{ recipe[2] }}</td>
+                    <td>{{ recipe[3] }}</td>
+                    <td>{{ recipe[4] if recipe[4] else 'N/A' }}</td>
+                    <td>{{ recipe[5] if recipe[5] else 'N/A' }}</td>
+                    <td>{{ recipe[6] if recipe[6] else 'N/A' }}</td>
+                    <td>{{ recipe[7] if recipe[7] else 'N/A' }}</td>
+                    <td>{{ recipe[8] if recipe[8] else 'N/A' }}</td>
+
+                    <!-- Bedingte Anzeige der Löschoption nur für den Rezeptverwalter -->
+                    {% if current_user.role == 'Rezepteverwalter' %}
+                        <td>
+                            <!-- Formular für das Löschen eines Rezepts -->
+                            <form method="POST" action="{{ url_for('delete_recipe', recipe_id=recipe[0]) }}" onsubmit="return confirm('Möchtest du dieses Rezept wirklich löschen?');">
+                                <!-- Löschen-Button -->
+                                <button type="submit" class="delete-btn">Löschen</button>
+                            </form>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

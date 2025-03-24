@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Setzt den Zeichensatz der Webseite auf UTF-8, damit Sonderzeichen korrekt angezeigt werden -->
+    <meta charset="UTF-8">
+    
+    <!-- Macht die Seite responsiv, d.h. sie passt sich an verschiedene Bildschirmgrössen an -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel der Seite, der in der Browser-Tab-Leiste angezeigt wird -->
+    <title>Startseite</title>
+</head>
+<body>
+    <!-- Begrüssung für den Benutzer -->
+    <h1>Willkommen bei der Rezepte-App!</h1>
+
+    <!-- Bereich mit einem Link zum Login -->
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+    </div>
+
+    <!-- Bereich mit einem Link zur Registrierung -->
+    <div>
+        <a href="{{ url_for('register') }}">Registrieren</a>
+    </div>
+</body>
+</html>
